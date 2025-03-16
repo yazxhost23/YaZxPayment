@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment Page - YazX Official</title>
+    <script>
+    
+
+    // Mencegah Klik Kanan
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Mencegah Kombinasi Tombol Inspect
+    document.addEventListener('keydown', function (event) {
+        if (event.keyCode == 123 || (event.ctrlKey && event.shiftKey && (event.keyCode == 73 || event.keyCode == 74)) || 
+            (event.ctrlKey && event.keyCode == 85)) {
+            event.preventDefault();
+        }
+    });
+
+    // Mendeteksi DevTools Terbuka
+    setInterval(function() {
+        let before = new Date().getTime();
+        debugger;
+        let after = new Date().getTime();
+        if (after - before > 100) {
+            document.body.innerHTML = "<h1>Mau Ngapain Lu Mek?</h1>";
+        }
+    }, 1000);
+    
+    let requestCount = 0;
+        setInterval(() => {
+            requestCount = 0; // Reset setiap 10 detik
+        }, 3000);
+    
+   document.addEventListener('click', function() {
+            requestCount++;
+            if (requestCount > 10) { // Jika lebih dari 10 klik dalam 10 detik, blokir
+                document.body.innerHTML = "<h1>Ddos? Apa itu Ddos wkwkwk😹</h1><p>Awowkkwkwkkwk Ddos Jir😹</p>";
+            }
+        });
+
+    // Mencegah CURL & Bots
+    (function() {
+        var userAgent = navigator.userAgent.toLowerCase();
+        if (userAgent.includes("curl") || userAgent.includes("wget") || userAgent.includes("bot")) {
+            document.body.innerHTML = "<h1>Mau Ngapain Lu Mek?</h1>";
+        }
+    })();
+</script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+
+        /* Global Styles */
+
+        body {
+
+            font-family: 'Arial', sans-serif;
+
+            margin: 0;
+
+            padding: 0;
+
+            background-color: #0a0a23;
+
+            color: #fff;
+
+            overflow-x: hidden;
+
+        }
+
+        /* Star Animation */
+
+        .stars {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            z-index: -1;
+
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+
+        }
+
+        .star {
+
+            position: absolute;
+
+            width: 2px;
+
+            height: 2px;
+
+            background-color: #fff;
+
+            border-radius: 50%;
+
+            animation: twinkle 1.5s infinite ease-in-out;
+
+        }
+
+        @keyframes twinkle {
+
+            0%, 100% { opacity: 0; }
+
+            50% { opacity: 1; }
+
+        }
+
+        /* Header */
+
+        header {
+
+            text-align: center;
+
+            padding: 20px;
+
+            background-color: rgba(51, 51, 51, 0.8);
+
+            margin-bottom: 20px;
+
+            backdrop-filter: blur(10px);
+
+            border-bottom: 2px solid #00aaff;
+
+        }
+
+        header h1 {
+
+            margin: 0;
+
+            font-size: 2.5rem;
+
+            color: #00aaff;
+
+            text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff;
+
+        }
+
+        header p {
+
+            margin: 0;
+
+            font-size: 1.2rem;
+
+            color: #ccc;
+
+        }
+
+        /* Payment Section */
+
+        .payment-section {
+
+            max-width: 600px;
+
+            margin: 0 auto;
+
+            padding: 20px;
+
+            background-color: rgba(34, 34, 34, 0.8);
+
+            border-radius: 15px;
+
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+
+            backdrop-filter: blur(10px);
+
+            border: 1px solid #00aaff;
+
+        }
+
+        .payment-section h2 {
+
+            text-align: center;
+
+            font-size: 1.8rem;
+
+            margin-bottom: 20px;
+
+            color: #00aaff;
+
+            text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff;
+
+        }
+
+        .payment-options {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+
+        }
+
+        .payment-option {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px;
+
+            background-color: rgba(51, 51, 51, 0.8);
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            transition: transform 0.3s ease, background-color 0.3s;
+
+            backdrop-filter: blur(10px);
+
+            border: 1px solid #00aaff;
+
+        }
+
+        .payment-option:hover {
+
+            background-color: rgba(68, 68, 68, 0.8);
+
+            transform: scale(1.05);
+
+        }
+
+        .payment-option img {
+
+            width: 50px;
+
+            height: 50px;
+
+            border-radius: 10px;
+
+        }
+
+        .payment-option h3 {
+
+            margin: 0;
+
+            font-size: 1.2rem;
+
+            color: #00aaff;
+
+        }
+
+        .payment-option p {
+
+            margin: 0;
+
+            font-size: 0.9rem;
+
+            color: #ccc;
+
+        }
+
+        /* QRIS Popup */
+
+        #qrisPopup {
+
+            display: none;
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.9);
+
+            justify-content: center;
+
+            align-items: center;
+
+            z-index: 1000;
+
+        }
+
+        #qrisPopup img {
+
+            max-width: 90%;
+
+            max-height: 90%;
+
+            border-radius: 15px;
+
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.7);
+
+        }
+
+        /* Back Button */
+
+        .back-button {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 10px 20px;
+
+            background-color: rgba(68, 68, 68, 0.8);
+
+            color: #fff;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+
+            transition: background-color 0.3s, transform 0.3s;
+
+            text-align: center;
+
+            backdrop-filter: blur(10px);
+
+            border: 1px solid #00aaff;
+
+        }
+
+        .back-button:hover {
+
+            background-color: rgba(85, 85, 85, 0.8);
+
+            transform: scale(1.05);
+
+        }
+
+        /* Footer */
+
+        footer {
+
+            text-align: center;
+
+            padding: 20px;
+
+            background-color: rgba(51, 51, 51, 0.8);
+
+            margin-top: 20px;
+
+            backdrop-filter: blur(10px);
+
+            border-top: 2px solid #00aaff;
+
+        }
+
+        footer p {
+
+            margin: 0;
+
+            font-size: 0.9rem;
+
+            color: #ccc;
+
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 768px) {
+
+            header h1 {
+
+                font-size: 2rem;
+
+            }
+
+            header p {
+
+                font-size: 1rem;
+
+            }
+
+            .payment-section h2 {
+
+                font-size: 1.5rem;
+
+            }
+
+            .payment-option h3 {
+
+                font-size: 1rem;
+
+            }
+
+            .payment-option p {
+
+                font-size: 0.8rem;
+
+            }
+
+        }
+
+        @media (max-width: 480px) {
+
+            header h1 {
+
+                font-size: 1.8rem;
+
+            }
+
+            header p {
+
+                font-size: 0.9rem;
+
+            }
+
+            .payment-section h2 {
+
+                font-size: 1.3rem;
+
+            }
+
+            .payment-option h3 {
+
+                font-size: 0.9rem;
+
+            }
+
+            .payment-option p {
+
+                font-size: 0.7rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Star Animation -->
+
+    <div class="stars">
+
+        <!-- Stars will be generated by JavaScript -->
+
+    </div>
+
+    <!-- Header -->
+
+    <header>
+
+        <h1>Pembayaran</h1>
+
+        <p>Selesaikan pembelian Anda Disini</p>
+
+    </header>
+
+    <!-- Payment Section -->
+
+    <section class="payment-section">
+
+        <h2>Pilih Pembayaran Anda</h2>
+
+        <p>Silakan pilih metode pembayaran yang Anda inginkan:</p>
+
+        <div class="payment-options">
+
+            <!-- QRIS -->
+
+            <div class="payment-option" onclick="openQRIS()">
+
+                <img src="https://files.catbox.moe/0z9fml.jpg" alt="QRIS">
+
+                <h3>QRIS</h3>
+
+                <p>Pindai kode QR di bawah ini untuk menyelesaikan pembayaran Anda.</p>
+
+            </div>
+
+            <!-- DANA -->
+
+            <div class="payment-option">
+
+                <img src="https://files.catbox.moe/lnneni.png" alt="DANA">
+
+                <h3>DANA</h3>
+
+                <p>DANA : 085723956572</p>
+
+            </div>>
+
+        </div>
+
+        <a href="index.html" class="back-button">Kembali</a>
+
+    </section>
+
+    <!-- QRIS Popup -->
+
+    <div id="qrisPopup" onclick="closeQRIS()">
+
+        <img src="https://files.catbox.moe/0z9fml.jpg" alt="QRIS Code">
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>&copy; 2024 YazX Official.</p>
+
+    </footer>
+
+    <script>
+
+        // Star Animation Script
+
+        const starsContainer = document.querySelector('.stars');
+
+        const starCount = 200; // Number of stars
+
+        for (let i = 0; i < starCount; i++) {
+
+            const star = document.createElement('div');
+
+            star.classList.add('star');
+
+            star.style.top = `${Math.random() * 100}%`;
+
+            star.style.left = `${Math.random() * 100}%`;
+
+            star.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random animation duration
+
+            starsContainer.appendChild(star);
+
+        }
+
+        // QRIS Popup Script
+
+        function openQRIS() {
+
+            const qrisPopup = document.getElementById('qrisPopup');
+
+            qrisPopup.style.display = 'flex';
+
+        }
+
+        function closeQRIS() {
+
+            const qrisPopup = document.getElementById('qrisPopup');
+
+            qrisPopup.style.display = 'none';
+
+        }
+
+    </script>
+
+</body>
+
+</html>

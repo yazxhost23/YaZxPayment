@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YazX Official Payment</title>
+    <script>
+    
+
+    // Mencegah Klik Kanan
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Mencegah Kombinasi Tombol Inspect
+    document.addEventListener('keydown', function (event) {
+        if (event.keyCode == 123 || (event.ctrlKey && event.shiftKey && (event.keyCode == 73 || event.keyCode == 74)) || 
+            (event.ctrlKey && event.keyCode == 85)) {
+            event.preventDefault();
+        }
+    });
+
+    // Mendeteksi DevTools Terbuka
+    setInterval(function() {
+        let before = new Date().getTime();
+        debugger;
+        let after = new Date().getTime();
+        if (after - before > 100) {
+            document.body.innerHTML = "<h1>Mau Ngapain Lu Mek?</h1>";
+        }
+    }, 1000);
+    
+    let requestCount = 0;
+        setInterval(() => {
+            requestCount = 0; // Reset setiap 10 detik
+        }, 3000);
+    
+   document.addEventListener('click', function() {
+            requestCount++;
+            if (requestCount > 10) { // Jika lebih dari 10 klik dalam 10 detik, blokir
+                document.body.innerHTML = "<h1>Ddos? Apa itu Ddos wkwkwkðŸ˜¹</h1><p>Awowkkwkwkkwk Ddos JirðŸ˜¹</p>";
+            }
+        });
+
+    // Mencegah CURL & Bots
+    (function() {
+        var userAgent = navigator.userAgent.toLowerCase();
+        if (userAgent.includes("curl") || userAgent.includes("wget") || userAgent.includes("bot")) {
+            document.body.innerHTML = "<h1>Mau Ngapain Lu Mek?</h1>";
+        }
+    })();
+</script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Ramadan Elements -->
+    <div class="ramadan-elements">
+        <div class="moon"></div>
+        <div class="lanterns">
+            <div class="lantern lantern-1"></div>
+            <div class="lantern lantern-2"></div>
+            <div class="lantern lantern-3"></div>
+            <div class="lantern lantern-4"></div>
+            <div class="lantern lantern-5"></div>
+        </div>
+    </div>
+
+    <!-- Animasi Bintang -->
+    <div class="stars">
+        <!-- Bintang-bintang akan di-generate oleh JavaScript -->
+    </div>
+
+    <!-- Audio yang otomatis diputar -->
+    <audio id="ramadanAudio" loop autoplay>
+        <source src="https://videy.co/v/?id=kcYrvjut1" type="audio/mp3">
+        
+    </audio>
+    
+    <!-- Tombol mute/unmute -->
+    <button id="audioToggle" class="audio-toggle">
+        <i class="fas fa-volume-up"></i>
+    </button>
+
+    <header>
+        </div>
+        <h1>HanzX Official</h1>
+        </div>
+    </header>
+    <footer>
+        <p>&copy; Payment HanzX.</p>
+        <div class="nav-buttons">
+            <a href="page2.html" class="nav-button">Klik Untuk Ke Pembayaran</a>
+        </div>
+    </footer>
+    <section id="contact">
+        <h2>Hubungi Admin</h2>
+        <p>
+            Jika Anda tertarik untuk bekerja sama atau membeli produk saya atau mau
+            tanya-tanya, silakan hubungi saya melalui:
+        </p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/6285723956572" target="_blank" class="whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://t.me/YazxOfficial" target="_blank" class="telegram">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Script untuk membuat bintang
+        const starsContainer = document.querySelector('.stars');
+        const starCount = 200; // Jumlah bintang
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 2 + 1}s`; // Durasi animasi acak
+            starsContainer.appendChild(star);
+        }
+
+        // Script untuk modal
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Script untuk live chat
+        function toggleChat() {
+            const chatBox = document.getElementById('chatBox');
+            chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function sendMessage() {
+            const chatInput = document.getElementById('chatInput');
+            const chatBody = document.getElementById('chatBody');
+            if (chatInput.value.trim() !== '') {
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('chat-message', 'user-message');
+                userMessage.innerHTML = `<p>${chatInput.value}</p>`;
+                chatBody.appendChild(userMessage);
+
+                // Auto-reply dari bot
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('chat-message', 'bot-message');
+                    botMessage.innerHTML = '<p>Terima kasih atas pesan Anda! Kami akan segera membalas.</p>';
+                    chatBody.appendChild(botMessage);
+                }, 1000);
+
+                chatInput.value = ''; // Clear input
+                chatBody.scrollTop = chatBody.scrollHeight; // Scroll ke bawah
+            }
+        }
+
+        // Audio Control
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('ramadanAudio');
+            const audioToggle = document.getElementById('audioToggle');
+            const audioIcon = audioToggle.querySelector('i');
+
+            // Play audio secara otomatis (bisa saja diblok oleh browser)
+            audio.play().catch(e => {
+                console.log('Auto-play was prevented by browser:', e);
+            });
+
+            // Toggle play/pause audio
+            audioToggle.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    audioIcon.className = 'fas fa-volume-up';
+                } else {
+                    audio.pause();
+                    audioIcon.className = 'fas fa-volume-mute';
+                }
+            });
+        });
+
+        // Countdown Timer Script
+        // Set target date untuk Idul Fitri (sesuaikan tanggalnya bila perlu)
+        const countdownDate = new Date("March 31, 2025 00:00:00").getTime();
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            // Jika hitung mundur selesai, tampilkan pesan
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("timer").innerHTML = "Selamat Idul Fitri!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,680 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #122038; /* Darker blue for Ramadan theme */
+    color: #ffffff; /* Warna teks putih */
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Ramadan Theme Elements */
+.ramadan-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.moon {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    background-color: #f9f6d8;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #f9f6d8, 0 0 40px rgba(249, 246, 216, 0.5);
+    overflow: hidden;
+    animation: moonGlow 5s infinite alternate;
+}
+
+.moon::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(249, 246, 216, 0.6);
+    border-radius: 50%;
+}
+
+.moon::after {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(249, 246, 216, 0.7);
+    border-radius: 50%;
+}
+
+.lanterns {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.lantern {
+    position: absolute;
+    width: 35px;
+    height: 60px;
+    background: radial-gradient(ellipse at center, #f27e3f 0%, #e74c3c 100%);
+    border-radius: 20px;
+    box-shadow: 0 0 15px #e74c3c, 0 0 30px rgba(231, 76, 60, 0.5);
+    animation: lanternSway 5s infinite ease-in-out;
+}
+
+.lantern::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #ffc83d;
+    border-radius: 50%;
+}
+
+.lantern::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 5px;
+    background-color: #ffc83d;
+    border-radius: 5px;
+}
+
+.lantern-1 {
+    top: 100px;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.lantern-2 {
+    top: 150px;
+    left: 20%;
+    animation-delay: 0.5s;
+}
+
+.lantern-3 {
+    top: 80px;
+    left: 40%;
+    animation-delay: 1s;
+}
+
+.lantern-4 {
+    top: 120px;
+    left: 60%;
+    animation-delay: 1.5s;
+}
+
+.lantern-5 {
+    top: 90px;
+    left: 80%;
+    animation-delay: 2s;
+}
+
+/* Ramadan Banner */
+.ramadan-banner {
+    margin: 0 auto 20px;
+    max-width: 800px;
+    text-align: center;
+}
+
+.ramadan-img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 200, 61, 0.5);
+}
+
+.ramadan-greeting {
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(52, 73, 94, 0.7));
+    border-radius: 10px;
+    border: 2px solid #ffc83d;
+    animation: glowBorder 2s infinite alternate;
+}
+
+.ramadan-greeting h2 {
+    margin: 0;
+    color: #ffc83d;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: none;
+}
+
+.ramadan-greeting p {
+    margin: 10px 0 0;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Countdown Section */
+#countdown {
+    background-color: #1a3057;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+    border: 1px solid #ffc83d;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#countdown h2 {
+    color: #ffc83d;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px rgba(255,200,61,0.5);
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.time-segment {
+    background-color: #234269;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 80px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.time-segment span {
+    font-size: 2rem;
+    color: #ffc83d;
+    display: block;
+}
+
+.time-segment p {
+    margin: 0;
+    color: #f9f6d8;
+}
+
+/* Audio Controls */
+.audio-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffc83d;
+    border: none;
+    color: #122038;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(255, 200, 61, 0.8);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.audio-toggle:hover {
+    transform: scale(1.1);
+    background-color: #e6b638;
+}
+
+/* Animasi Bintang */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #1a3057, #294c75); /* Darker blue for Ramadan */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-in-out;
+    position: relative;
+    z-index: 1;
+    border-bottom: 3px solid #ffc83d;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffc83d; /* Gold color for Ramadan */
+    text-shadow: 0 0 10px rgba(255, 200, 61, 0.5);
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #f9f6d8; /* Light cream color */
+}
+
+/* Section */
+section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #1a3057; /* Darker blue for Ramadan */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-in-out;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #ffc83d;
+}
+
+h2 {
+    color: #ffc83d; /* Gold color for Ramadan */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ffc83d;
+    display: inline-block;
+    padding-bottom: 5px;
+    text-shadow: 0 0 5px rgba(255, 200, 61, 0.3);
+}
+
+/* Gallery */
+.gallery, .product-gallery {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img, .product-item img {
+    max-width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.gallery img:hover, .product-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 200, 61, 0.3); /* Gold shadow for Ramadan */
+    border-color: #ffc83d;
+}
+
+/* Product Item */
+.product-item {
+    text-align: center;
+    background-color: #234269; /* Darker blue for product items */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+    border: 1px solid rgba(255, 200, 61, 0.3);
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(255, 200, 61, 0.3); /* Gold shadow for Ramadan */
+    border-color: #ffc83d;
+}
+
+.product-item h3 {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    color: #ffc83d; /* Gold color for Ramadan */
+}
+
+/* Contact Buttons */
+.contact-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.contact-buttons a {
+    text-decoration: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.contact-buttons .whatsapp {
+    background-color: #25D366;
+}
+
+.contact-buttons .telegram {
+    background-color: #0088cc;
+}
+
+.contact-buttons a:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+    box-shadow: 0 6px 12px rgba(255, 200, 61, 0.3);
+}
+
+.contact-buttons i {
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a3057; /* Darker blue for Ramadan */
+    color: white;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    animation: fadeInUp 1s ease-in-out;
+    position: relative;
+    z-index: 1;
+    border-top: 3px solid #ffc83d;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    background-color: #1a3057; /* Darker blue for Ramadan */
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(255, 200, 61, 0.3); /* Gold shadow for Ramadan */
+    animation: slideInDown 0.3s ease-in-out;
+    border: 2px solid #ffc83d;
+}
+
+.close {
+    color: #ffc83d;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #f9f6d8; /* Light cream color */
+}
+
+/* Nav Buttons */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1a3057; /* Darker blue background */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-align: center;
+    border: 2px solid #ffc83d;
+    color: #ffc83d;
+}
+
+.nav-button:hover {
+    background-color: #ffc83d;
+    color: #122038;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(255, 200, 61, 0.5);
+}
+
+/* Ramadan Animations */
+@keyframes moonGlow {
+    0% {
+        box-shadow: 0 0 20px #f9f6d8, 0 0 40px rgba(249, 246, 216, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 30px #f9f6d8, 0 0 60px rgba(249, 246, 216, 0.7);
+    }
+}
+
+@keyframes lanternSway {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+@keyframes glowBorder {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 200, 61, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(255, 200, 61, 0.8);
+    }
+}
+
+/* General Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .gallery img, .product-item img {
+        height: 150px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-buttons a {
+        width: 80%;
+        justify-content: center;
+    }
+
+    .moon {
+        width: 60px;
+        height: 60px;
+        top: 30px;
+        right: 30px;
+    }
+
+    .lantern {
+        width: 25px;
+        height: 45px;
+    }
+
+    .ramadan-greeting h2 {
+        font-size: 1.5rem;
+    }
+
+    .ramadan-greeting p {
+        font-size: 1rem;
+    }
+
+    .audio-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .ramadan-greeting h2 {
+        font-size: 1.3rem;
+    }
+
+    .lantern-2, .lantern-4 {
+        display: none; /* Hide some lanterns on very small screens */
+    }
+    
+    .nav-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        width: 90%;
+        margin-bottom: 5px;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .audio-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
+/* For tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .product-gallery {
+        gap: 20px;
+    }
+    
+    .product-item {
+        width: calc(33.33% - 20px);
+    }
+    
+    .lantern {
+        width: 30px;
+        height: 55px;
+    }
+}
+
+/* For iOS specific adjustments */
+@supports (-webkit-touch-callout: none) {
+    /* CSS specific to iOS devices */
+    .audio-toggle {
+        bottom: 30px; /* Extra space for iOS navigation bar */
+    }
+    
+    .modal-content {
+        margin-top: 20%; /* Adjust modal position for iOS */
+    }
+}
